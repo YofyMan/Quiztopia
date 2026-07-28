@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+<section class="dashboard-heading container">
+  <div><span class="eyebrow">Dashboard</span><h1>What do you want to practice?</h1><p class="muted">Generate a fresh multiple-choice quiz in seconds.</p></div>
+</section>
+<section class="dashboard-grid container">
+  <form class="generator-card card" action="/quizzes/generate" method="POST" data-loading-form>
+    <h2>Create a new quiz</h2>
+    <label>Topic<input name="topic" type="text" maxlength="100" placeholder="Example: Python loops" required></label>
+    <div class="form-row">
+      <label>Difficulty<select name="difficulty"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option></select></label>
+      <label>Questions<select name="count"><option value="3">3</option><option value="5" selected>5</option><option value="7">7</option><option value="10">10</option></select></label>
+    </div>
+    <button class="button button-primary button-full" type="submit"><span class="button-text">Generate quiz</span><span class="button-loading" hidden>Generating…</span></button>
+    <p class="fine-print">AI-generated content can contain mistakes. Review explanations carefully.</p>
+  </form>
+  <aside class="recent-card card">
+    <div class="section-title-row"><h2>Recent quizzes</h2><a href="/history">View all</a></div>
+    <% if (recentQuizzes.length === 0) { %>
+      <div class="empty-state"><span>📝</span><p>No quizzes yet. Generate your first one!</p></div>
+    <% } else { %>
+      <div class="quiz-list">
+        <% recentQuizzes.forEach(quiz => { %>
+          <a class="quiz-list-item" href="<%= quiz.completed ? `/quizzes/${quiz._id}/results` : `/quizzes/${quiz._id}` %>">
+            <div><strong><%= quiz.title %></strong><span><%= quiz.difficulty %> · <%= quiz.questions.length %> questions</span></div>
+            <span class="score-badge"><%= quiz.completed ? `${quiz.score}/${quiz.questions.length}` : 'Open' %></span>
+          </a>
+        <% }) %>
+      </div>
+    <% } %>
+  </aside>
+</section>
+<%- include('partials/footer') %>

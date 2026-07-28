@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+<section class="results-page container">
+  <% const percent = Math.round((quiz.score / quiz.questions.length) * 100); %>
+  <div class="score-hero card">
+    <span class="eyebrow">Quiz complete</span>
+    <div class="score-circle"><strong><%= percent %>%</strong><span><%= quiz.score %> of <%= quiz.questions.length %></span></div>
+    <h1><%= percent >= 80 ? 'Excellent work!' : percent >= 60 ? 'Good progress!' : 'Keep practicing!' %></h1>
+    <p class="muted">Review each question below to learn from your answers.</p>
+    <div class="hero-actions"><a class="button button-primary" href="/dashboard">Create another quiz</a><a class="button button-secondary" href="/history">View history</a></div>
+  </div>
+  <div class="review-list">
+    <% quiz.questions.forEach((item, index) => { const correct = item.selectedIndex === item.correctIndex; %>
+      <article class="review-card card <%= correct ? 'review-correct' : 'review-wrong' %>">
+        <div class="review-heading"><span class="status-icon"><%= correct ? '✓' : '✕' %></span><div><span class="question-number">Question <%= index + 1 %></span><h2><%= item.question %></h2></div></div>
+        <p><strong>Your answer:</strong> <%= item.selectedIndex === null ? 'No answer' : item.choices[item.selectedIndex] %></p>
+        <% if (!correct) { %><p><strong>Correct answer:</strong> <%= item.choices[item.correctIndex] %></p><% } %>
+        <% if (item.explanation) { %><div class="explanation"><strong>Explanation:</strong> <%= item.explanation %></div><% } %>
+      </article>
+    <% }) %>
+  </div>
+</section>
+<%- include('partials/footer') %>

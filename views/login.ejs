@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<section class="auth-shell container">
+  <form class="auth-card card" action="/login" method="POST">
+    <span class="eyebrow">Welcome back</span>
+    <h1>Log in to QuizForge</h1>
+    <p class="muted">Continue your quizzes and review past scores.</p>
+    <label>Email<input name="email" type="email" required autocomplete="email"></label>
+    <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+    <button class="button button-primary button-full" type="submit">Log in</button>
+    <p class="form-footer">Need an account? <a href="/signup">Sign up</a></p>
+  </form>
+</section>
+<%- include('partials/footer') %>

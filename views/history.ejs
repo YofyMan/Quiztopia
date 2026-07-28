@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+<section class="history-page container">
+  <div class="section-title-row history-title"><div><span class="eyebrow">Saved activity</span><h1>Quiz history</h1><p class="muted">Review scores, rename quizzes, or remove old attempts.</p></div><a class="button button-primary" href="/dashboard">New quiz</a></div>
+  <% if (quizzes.length === 0) { %>
+    <div class="empty-state card"><span>📚</span><h2>Your history is empty</h2><p>Generate and complete a quiz to see it here.</p></div>
+  <% } else { %>
+    <div class="history-grid">
+      <% quizzes.forEach(quiz => { %>
+        <article class="history-card card">
+          <div class="history-card-top"><div><span class="topic-tag"><%= quiz.topic %></span><h2><%= quiz.title %></h2><p><%= quiz.difficulty %> · <%= quiz.questions.length %> questions · <%= new Date(quiz.createdAt).toLocaleDateString() %></p></div><div class="large-score"><%= quiz.completed ? `${quiz.score}/${quiz.questions.length}` : 'Open' %></div></div>
+          <div class="history-actions">
+            <a class="button button-secondary button-small" href="<%= quiz.completed ? `/quizzes/${quiz._id}/results` : `/quizzes/${quiz._id}` %>"><%= quiz.completed ? 'Review' : 'Continue' %></a>
+            <button class="button button-ghost button-small" type="button" data-toggle-edit="<%= quiz._id %>">Rename</button>
+            <form action="/quizzes/<%= quiz._id %>/delete" method="POST" data-confirm-delete><button class="button button-danger button-small" type="submit">Delete</button></form>
+          </div>
+          <form id="edit-<%= quiz._id %>" class="rename-form" action="/quizzes/<%= quiz._id %>/title" method="POST" hidden><input name="title" value="<%= quiz.title %>" maxlength="80" required><button class="button button-primary button-small" type="submit">Save</button></form>
+        </article>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+<%- include('partials/footer') %>

@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+<section class="hero container">
+  <div class="hero-copy">
+    <span class="eyebrow">AI-powered study practice</span>
+    <h1>Turn any topic into a personalized quiz.</h1>
+    <p>Choose a subject and difficulty. Quiztopia creates multiple-choice questions, grades your answers, and saves your progress.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="/signup">Create free account</a>
+      <a class="button button-secondary" href="/login">Log in</a>
+    </div>
+  </div>
+  <div class="hero-card card">
+    <div class="fake-window-dots"><span></span><span></span><span></span></div>
+    <p class="label">Sample question</p>
+    <h2>Which Python collection stores unique values?</h2>
+    <div class="sample-options">
+      <div>A. List</div><div class="selected">B. Set</div><div>C. Tuple</div><div>D. String</div>
+    </div>
+    <div class="result-pill">✓ Correct answer</div>
+  </div>
+</section>
+<section class="features container">
+  <article class="feature card"><span class="feature-icon">✦</span><h2>Generate instantly</h2><p>Create 3–10 questions about almost any academic topic.</p></article>
+  <article class="feature card"><span class="feature-icon">✓</span><h2>Learn from results</h2><p>See your score, correct answers, and concise explanations.</p></article>
+  <article class="feature card"><span class="feature-icon">↻</span><h2>Track your history</h2><p>Save, rename, review, and delete quizzes from your account.</p></article>
+</section>
+<%- include('partials/footer') %>

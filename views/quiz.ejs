@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+<section class="quiz-page container">
+  <div class="quiz-header"><div><span class="eyebrow"><%= quiz.difficulty %> difficulty</span><h1><%= quiz.title %></h1><p class="muted"><%= quiz.questions.length %> questions · Select one answer for each question.</p></div><div class="progress-label"><span id="answeredCount">0</span>/<%= quiz.questions.length %> answered</div></div>
+  <form action="/quizzes/<%= quiz._id %>/submit" method="POST" data-quiz-form>
+    <% quiz.questions.forEach((item, questionIndex) => { %>
+      <article class="question-card card">
+        <div class="question-number">Question <%= questionIndex + 1 %></div>
+        <h2><%= item.question %></h2>
+        <div class="answer-list">
+          <% item.choices.forEach((choice, choiceIndex) => { %>
+            <label class="answer-option">
+              <input type="radio" name="answer_<%= questionIndex %>" value="<%= choiceIndex %>">
+              <span class="choice-letter"><%= String.fromCharCode(65 + choiceIndex) %></span>
+              <span><%= choice %></span>
+            </label>
+          <% }) %>
+        </div>
+      </article>
+    <% }) %>
+    <button class="button button-primary submit-quiz" type="submit">Submit quiz</button>
+  </form>
+</section>
+<%- include('partials/footer') %>
