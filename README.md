@@ -129,7 +129,7 @@ Open `http://localhost:3000`.
    - `NODE_ENV` with value `production`
 5. Deploy and test signup, login, quiz generation, scoring, history, rename, and delete.
 
-## Suggested test account for submission
+## Test account for submission
 
 Create a normal account after deployment and give the instructor its email and password. Do not use your personal password.
 
