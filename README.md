@@ -11,11 +11,6 @@ Quiztopia is a full-stack GenAI quiz application. Registered users can generate 
 - Topic, difficulty, and question-count controls
 - Automatic scoring and answer review
 - Quiz history stored in MongoDB
-- CRUD operations:
-  - Create a generated quiz
-  - Read quiz history and results
-  - Update a quiz title
-  - Delete a quiz
 - Responsive interface for desktop and mobile
 - Loading, validation, API-error, and not-found states
 
