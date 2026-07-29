@@ -1,6 +1,6 @@
-# QuizForge AI
+# Quiztopia
 
-QuizForge AI is a full-stack GenAI quiz application. Registered users can generate multiple-choice quizzes on a topic, complete them, receive scores and explanations, and manage their saved quiz history.
+Quiztopia is a full-stack GenAI quiz application. Registered users can generate multiple-choice quizzes on a topic, complete them, receive scores and explanations, and manage their saved quiz history.
 
 ## Features
 
